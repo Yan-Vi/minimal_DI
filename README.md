@@ -29,6 +29,7 @@ public class GameEntry: MonoBehaviour
     {
         MinDI.DefaultInit();
         // MinDI.Contexts["MyContext"] = new ServiceContainer();  - for custom context
+
         MinDI.Default.RegisterPublicFields(this);
         // MinDI.Contexts["MyContext"].RegisterPublicFields(this); - for custom context
     }
@@ -67,6 +68,7 @@ public class SampleScript: MonoBehaviour
     {
         this.Resolve(); // injects all dependencies without InjectComponent
         //this.Resolve(MinDI.Contexts["MyContext"]); - for custom context
+
         _mainCamera.transform.position = _player.transform.position + Vector3.up * 10;
         _player.Score = _playerProgress.Score;
     }
