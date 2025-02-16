@@ -27,8 +27,10 @@ public class GameEntry: MonoBehaviour
    
     private void Awake()
     {
-        MinDI.DefaultInit(); // MinDI.Contexts["MyContext"] = new ServiceContainer()  - for custom context
-        MinDI.Default.RegisterPublicFields(this); // MinDI.Contexts["MyContext"].RegisterPublicFields(this); - for custom context
+        MinDI.DefaultInit();
+        // MinDI.Contexts["MyContext"] = new ServiceContainer()  - for custom context
+        MinDI.Default.RegisterPublicFields(this);
+        // MinDI.Contexts["MyContext"].RegisterPublicFields(this); - for custom context
     }
 }
 ```
