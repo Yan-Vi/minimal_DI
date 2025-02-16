@@ -23,15 +23,20 @@ public class GameEntry: MonoBehaviour
 {
     public Camera MainCamera; //serialized Component class
     public Player Player; //serialized custom MonoBehaviour class
-    public PlayerProgress playerProgress = new PlayerProgress(); // non-serialized non-MonoMehaviour class
+    public IPlayerProgress playerProgress = new PlayerProgress(); // non-serialized non-MonoMehaviour class
    
     private void Awake()
     {
         MinDI.DefaultInit();
         // MinDI.Contexts["MyContext"] = new ServiceContainer();  - for custom context
 
-        MinDI.Default.RegisterPublicFields(this);
-        // MinDI.Contexts["MyContext"].RegisterPublicFields(this); - for custom context
+        MinDI.Default.RegisterService(playerProgress); // default registration
+        MinDI.Default.RegisterService<IPlayerProgress>(playerProgress); // register as interface
+        MinDI.Default.RegisterInterfaces(playerProgress) // registers object for all interfaces it implements
+
+        MinDI.Default.RegisterPublicFields(this); // shortcut that registers all public fields and their interfaces on this object
+
+        // MinDI.Contexts["MyContext"]. - for custom context
     }
 }
 ```
@@ -44,6 +49,7 @@ public class SampleScript: MonoBehaviour
 {
     [Inject] private Camera _mainCamera;
     [Inject] private PlayerProgress _playerProgress;
+    [Inject] private IPlayerProgress _playerProgressInterface; // both can be used
     [Inject] private Player _player;
 
     private void Awake()
