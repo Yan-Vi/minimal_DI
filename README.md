@@ -13,8 +13,6 @@ Features:
 
 To use MinDI you need to initialize it **MinDI.DefaultInit()**, it will create default context.
 
-To create custom context write **MinDI.Default.Contexts["MyContext"] = new ServiceContainer()** instead.
-
 If you are using **InjectComponent** you need to set ExecutionOrder of your Registration script lower than -20000 so it executes before **InjectComponent** starts Injection of registered dependencies
 
 Register components on **Awake()** in your **Dependency Registration** script:
@@ -29,8 +27,8 @@ public class GameEntry: MonoBehaviour
    
     private void Awake()
     {
-        MinDI.DefaultInit();
-        MinDI.Default.RegisterPublicFields(this);
+        MinDI.DefaultInit(); // MinDI.Contexts["MyContext"] = new ServiceContainer()  - for custom context
+        MinDI.Default.RegisterPublicFields(this); // MinDI.Contexts["MyContext"].RegisterPublicFields(this); - for custom context
     }
 }
 ```
