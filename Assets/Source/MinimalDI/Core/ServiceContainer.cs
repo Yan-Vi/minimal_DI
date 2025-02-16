@@ -9,6 +9,7 @@ namespace MinimalDI.Core
     {
         private readonly Dictionary<Type, object> _items = new();
 
+        public IEnumerable<object> Services => _items.Values;
         public T GetService<T>() where T : class => _items.GetValueOrDefault(typeof(T)) as T;
         
         public object GetService(Type t) => _items.GetValueOrDefault(t);
@@ -49,21 +50,8 @@ namespace MinimalDI.Core
             HashSet<IDisposable> disposed = new HashSet<IDisposable>();
             foreach (var key in itemsToRemove)
             {
-                var service = _items.GetValueOrDefault(key);
-                if (service is IDisposable disposable && !disposed.Contains(service))
-                {
-                    disposed.Add(disposable);
-                    disposable.Dispose();
-                }
                 _items.Remove(key);
             }
         }
-
-        public void Dispose()
-        {
-            _items.Values.OfType<IDisposable>().ToList().ForEach(x => x.Dispose());
-            _items.Clear();
-        }
-        
     }
 }

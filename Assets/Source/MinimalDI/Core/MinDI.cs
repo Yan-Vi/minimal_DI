@@ -11,16 +11,8 @@ namespace MinimalDI.Core
             set => Contexts[nameof(Default)] = value;
         }
 
-        public static Dictionary<string, IServiceContainer> Contexts = new();
+        public static readonly Dictionary<string, IServiceContainer> Contexts = new();
         
         public static void DefaultInit() => Default = new ServiceContainer();
-        public static void Dispose()
-        { 
-            foreach (var container in Contexts.Values)
-            {
-                container.Dispose();
-            }
-            Contexts.Clear();
-        }
     }
 }
