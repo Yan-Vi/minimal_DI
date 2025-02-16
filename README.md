@@ -11,7 +11,7 @@ Features:
 
 Limitations:
 - No support for nested dependency resolution (by choice, be aware of your dependencies)
-- No support for inherited dependencies resolution
+- No support for inherited dependencies resolution, composition works fine
 
 ## Usage example
 
