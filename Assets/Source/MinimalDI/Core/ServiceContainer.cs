@@ -13,6 +13,11 @@ namespace MinimalDI.Core
         
         public object GetService(Type t) => _items.GetValueOrDefault(t);
 
+        public void RegisterService<T>(T service) where T : class
+        {
+            Register(typeof(T), service);
+        }
+        
         public void RegisterService(object service)
         {
             Register(service.GetType(), service);
@@ -22,11 +27,6 @@ namespace MinimalDI.Core
         {
             foreach (var type in service.GetType().GetInterfaces())
                 Register(type, service);
-        }
-
-        public void RegisterService<T, TInterface>(T service) where T : TInterface
-        {
-            Register(typeof(TInterface), service);
         }
 
         private void Register(Type type, object obj)
