@@ -9,6 +9,10 @@ Features:
 - Injection component for MonoBehaviour auto-resolution
 - Compatible with AOT IL2CPP builds
 
+Limitations:
+- No support for nested dependency resolution (by choice, be aware of your dependencies)
+- No support for inherited dependencies
+
 ## Usage example
 
 To use MinDI you need to initialize it **MinDI.DefaultInit()**, it will create default context.
