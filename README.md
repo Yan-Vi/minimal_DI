@@ -7,6 +7,7 @@ Features:
 - AsSingle service registration support only
 - Extensions for registration, and injection of fields
 - Injection component for MonoBehaviour auto-resolution
+- Compatible with AOT IL2CPP builds
 
 ## Usage example
 
