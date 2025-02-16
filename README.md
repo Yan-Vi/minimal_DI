@@ -36,7 +36,7 @@ public class GameEntry: MonoBehaviour
 
         MinDI.Default.RegisterPublicFields(this); // shortcut that registers all public fields and their interfaces on this object
 
-        // MinDI.Contexts["MyContext"]. - for custom context
+        // MinDI.Contexts["MyContext"].RegisterPublicFields(this) - for custom context
     }
 }
 ```
