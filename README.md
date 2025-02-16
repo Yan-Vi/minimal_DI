@@ -11,7 +11,9 @@ Features:
 ## Usage example
 
 To use MinDI you need to initialize it `MinDI.DefaultInit()`, it will create default context.
+
 To create custom context write `MinDI.Default.Contexts["MyContext"] = new ServiceContainer()` instead.
+
 If you are using `InjectComponent` you need to set ExecutionOrder of your Registration script lower than -20000 so it executes before `InjectComponent` starts Injection of registered dependencies
 
 Register components on `Awake()` in your **Dependency Registration** script:
@@ -50,6 +52,7 @@ public class SampleScript: MonoBehaviour
 }
 ```
 For AutoInjection use `InjectComponent` in will scan all components on `GameObject` and will resolve all Fields tagged with `[Inject]` Attribute.
+
 For manual resolution use extension `Resolve()` method:
 
 ```c
