@@ -52,7 +52,7 @@ public class SampleScript: MonoBehaviour
     }
 }
 ```
-For auto-injection use **InjectComponent** in will scan all components on **GameObject** and will resolve all fields tagged with **[Inject]** Attribute.
+For auto-injection use **InjectComponent** in will scan all components on **GameObject** and will resolve all fields tagged with **[Inject]** Attribute using selected context.
 
 For manual resolution use extension method **Resolve()** :
 
@@ -66,7 +66,7 @@ public class SampleScript: MonoBehaviour
     private void Awake()
     {
         this.Resolve(); // injects all dependencies without InjectComponent
-
+        //this.Resolve(MinDI.Contexts["MyContext"]); - for custom context
         _mainCamera.transform.position = _player.transform.position + Vector3.up * 10;
         _player.Score = _playerProgress.Score;
     }
