@@ -22,7 +22,7 @@ Register components on **Awake()** in your **Dependency Registration** script:
 public class GameEntry: MonoBehaviour
 {
     public Camera MainCamera; //serialized Component class
-    public Player Player; //serialized MonoBehaviour class
+    public Player Player; //serialized custom MonoBehaviour class
     public PlayerProgress playerProgress = new PlayerProgress(); // non-serialized non-MonoMehaviour class
    
     private void Awake()
@@ -54,7 +54,7 @@ public class SampleScript: MonoBehaviour
 ```
 For auto-injection use **InjectComponent** in will scan all components on **GameObject** and will resolve all fields tagged with **[Inject]** Attribute.
 
-For manual resolution use extension **Resolve()** method:
+For manual resolution use extension method **Resolve()** :
 
 ```c
 public class SampleScript: MonoBehaviour
