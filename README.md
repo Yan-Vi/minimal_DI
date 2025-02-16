@@ -30,7 +30,8 @@ public class GameEntry: MonoBehaviour
     }
 }
 ```
-Both `Camera` and `PlayerProgress` now will be registered and can be injected and used
+Both `Camera` and `PlayerProgress` now will be registered and can be injected and used.
+
 UsageExample:
 ```c
 [RequireComponent(typeof(InjectComponent))] 
