@@ -1,4 +1,4 @@
-# Minimal_DI
+# Minimal_DI for Unity
 
 This is as simple as possible DI solution for Unity
 
